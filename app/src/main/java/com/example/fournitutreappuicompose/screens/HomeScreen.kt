@@ -29,11 +29,11 @@ import com.example.fournitutreappuicompose.ui.theme.Background
 @Composable
 fun HomeScreen(navController: NavController){
     Scaffold(topBar = { MyTopBar() }) {
-        Content(it)
+        Content(it,navController)
     }
 }
 @Composable
-fun Content(it: PaddingValues) {
+fun Content(it: PaddingValues, navController: NavController) {
     val productsList = Data().getAllFourniture()
     Column(
         Modifier
@@ -53,7 +53,7 @@ fun Content(it: PaddingValues) {
         TitleText(text = "New Arrivals",Modifier.padding(start = 27.dp, top = 10.dp, bottom = 17.dp))
         LazyRow{
             items(items = productsList){
-                ItemCard(item = it)
+                ItemCard(item = it,navController)
             }
         }
         TitleText(text = "Recently Viewed", modifier = Modifier.padding(start = 27.dp,top=20.dp))

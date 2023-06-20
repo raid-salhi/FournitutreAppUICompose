@@ -1,6 +1,7 @@
 package com.example.fournitutreappuicompose.componants
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,8 +31,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.fournitutreappuicompose.R
 import com.example.fournitutreappuicompose.model.Fourniture
+import com.example.fournitutreappuicompose.navigation.ScreensNavigation
 import com.example.fournitutreappuicompose.ui.theme.Background
 import com.example.fournitutreappuicompose.ui.theme.ButtonColor
 import com.example.fournitutreappuicompose.ui.theme.EntryText
@@ -103,11 +106,13 @@ fun ImageContainer(pic: Int) {
 }
 
 @Composable
-fun ItemCard(item: Fourniture) {
+fun ItemCard(item: Fourniture, navController: NavController) {
     Surface(
         shape = RoundedCornerShape(18.dp),
         color = Color(0x66FFFFFF),
-        modifier = Modifier.padding(start = 20.dp, top = 20.dp, bottom =20.dp )
+        modifier = Modifier
+            .clickable { navController.navigate(ScreensNavigation.ProductScreen.name+"/${item.title}") }
+            .padding(start = 20.dp, top = 20.dp, bottom =20.dp )
     ) {
         Column(verticalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.padding(20.dp)) {

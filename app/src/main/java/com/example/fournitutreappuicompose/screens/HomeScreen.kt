@@ -27,13 +27,13 @@ import com.example.fournitutreappuicompose.ui.theme.Background
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController){
+fun HomeScreen(navController: NavController, title: String?){
     Scaffold(topBar = { MyTopBar() }) {
-        Content(it,navController)
+        Content(it,navController,title)
     }
 }
 @Composable
-fun Content(it: PaddingValues, navController: NavController) {
+fun Content(it: PaddingValues, navController: NavController, title: String?) {
     val productsList = Data().getAllFourniture()
     Column(
         Modifier
@@ -57,7 +57,15 @@ fun Content(it: PaddingValues, navController: NavController) {
             }
         }
         TitleText(text = "Recently Viewed", modifier = Modifier.padding(start = 27.dp,top=20.dp))
-        RecentItem(productsList[0])
+        if (title.isNullOrEmpty())
+            RecentItem(productsList[0])
+        else{
+            val itemInList = productsList.filter {
+                it.title==title
+            }
+            val item=itemInList.first()
+            RecentItem(fourniture = item)
+        }
     }
 
 

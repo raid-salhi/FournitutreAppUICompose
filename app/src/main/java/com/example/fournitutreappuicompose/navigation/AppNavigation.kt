@@ -18,7 +18,10 @@ fun AppNavigation (){
             MarketingScreen(navController)
         }
         composable(route = ScreensNavigation.HomeScreen.name){
-            HomeScreen(navController = navController)
+            it.savedStateHandle.get<String>("title").let {
+                HomeScreen(navController = navController,it)
+            }
+
         }
         composable(
             route = ScreensNavigation.ProductScreen.name+"/{title}",

@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.painterResource
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.fournitutreappuicompose.R
+import com.example.fournitutreappuicompose.componants.RoundedButton
 import com.example.fournitutreappuicompose.navigation.ScreensNavigation
 import com.example.fournitutreappuicompose.ui.theme.Background
 import com.example.fournitutreappuicompose.ui.theme.ButtonColor
@@ -96,23 +98,10 @@ fun MarketingScreen(navController: NavController) {
                     Image(painter = painterResource(id = R.drawable.arrow),
                         modifier = Modifier.size(110.dp),
                         contentDescription = null,)
-                    Button(
-                        onClick = { navController.navigate(ScreensNavigation.HomeScreen.name)},
-                        shape = CircleShape,
-                        colors = ButtonDefaults.buttonColors(containerColor = ButtonColor, contentColor = Background),
-                        elevation =ButtonDefaults.buttonElevation(10.dp),
-                        modifier = Modifier
-                            .padding(top = 25.dp)
-                            .size(130.dp)
-
-                    ) {
-                        Text(
-                            text = "START",
-                            fontFamily = FontFamily(Font(R.font.montseeat)),
-                            fontSize = 17.sp,
-                            fontWeight = FontWeight.Bold
-                        )
+                    RoundedButton(Modifier.padding(top= 25.dp),title= "START",color = ButtonColor){
+                        navController.navigate(ScreensNavigation.HomeScreen.name)
                     }
+
                 }
                 
             }
@@ -120,3 +109,4 @@ fun MarketingScreen(navController: NavController) {
     }
 
 }
+

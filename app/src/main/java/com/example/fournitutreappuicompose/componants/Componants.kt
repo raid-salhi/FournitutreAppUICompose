@@ -164,7 +164,7 @@ fun TitleText(text: String,modifier: Modifier) {
     )
 }
 
-@Preview
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyTopBar(){
